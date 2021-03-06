@@ -1,0 +1,1 @@
+(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["chunk-2d21ab0a"],{bd1c:function(n,e,s){"use strict";s.r(e);var a=function(){var n=this,e=n.$createElement,s=n._self._c||e;return s("p",[n._v(" 使用axios请求，配置文件在\\src\\plugins\\axios\\index.js ")])},c=[],t={},u=t,i=s("2877"),l=Object(i["a"])(u,a,c,!1,null,null,null);e["default"]=l.exports}}]);
