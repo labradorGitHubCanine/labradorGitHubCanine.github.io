@@ -5,6 +5,16 @@
     <title>Title</title>
 </head>
 <body>
-00
+<div id="app">
+    {{a}}
+</div>
+<script src="dist/vue/2.6.14/vue.min.js">
+    new Vue({
+        el: '#app',
+        data: {
+            a: 1
+        }
+    })
+</script>
 </body>
 </html>
