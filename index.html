@@ -2,17 +2,29 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>个人简历</title>
+    <script src="dist/vue/2.6.14/vue.min.js"></script>
 </head>
 <body>
 <div id="app">
-    {{a}}
+    <h1 style="text-align: center">个人简历</h1>
+    <div v-for="(value, key) in info">
+        {{key}}:{{value}}
+    </div>
 </div>
-<script src="dist/vue/2.6.14/vue.min.js">
+<script>
+    console.log(123)
     new Vue({
         el: '#app',
         data: {
-            a: 1
+            info: {
+                "姓名": "强名威",
+                "所在地": "浙江省杭州市",
+                "工作年限": "5年",
+                "求职意向": "Java/全栈开发",
+                "手机号码": "18767162021",
+                "邮箱": "123349527@qq.com",
+            }
         }
     })
 </script>
