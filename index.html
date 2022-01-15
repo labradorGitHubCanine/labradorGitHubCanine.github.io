@@ -34,6 +34,7 @@
         @media screen and ( max-width: 991px ) {
             #app {
                 padding: 0;
+                width: 100%;
             }
         }
     </style>
@@ -72,9 +73,14 @@
     </el-row>
     <el-divider content-position="left"><i class="el-icon-s-cooperation"></i>&nbsp;项目经验</el-divider>
     <el-row v-for="(i, index) in projects" :key="index">
-        <el-col :span="10">{{index + 1}}.{{i.name}}</el-col>
-        <el-col :span="10">{{i.role}}</el-col>
-        <el-col :span="4">{{i.during}}</el-col>
+        <b>
+            <el-col :span="10">{{index + 1}}.{{i.name}}</el-col>
+            <el-col :span="10">{{i.role}}</el-col>
+            <el-col :span="4">{{i.during}}</el-col>
+        </b>
+        <el-col :span="24">
+            <p v-for="(j, index2) in i.desc" :key="index2">{{j}}</p>
+        </el-col>
     </el-row>
     <el-divider content-position="left"><i class="el-icon-s-opportunity"></i>&nbsp;其它</el-divider>
     <div>简历主页：<a href="https://labradorgithubcanine.github.io">https://labradorgithubcanine.github.io</a></div>
@@ -106,43 +112,66 @@
                     name: '物流数仓系统',
                     role: '主导人',
                     during: '2021年',
-                    desc: []
+                    desc: [
+                        ''
+                    ]
                 },
                 {
                     name: '医院随访系统',
                     role: '主导人',
                     during: '2020年',
-                    desc: []
+                    desc: [
+                        '这是一个给医生使用的项目。患者在完手术或检查后医生需要定期对其身体状况进行调查，以往都是采用电话调查+Excel记录进行随访的方式。这个系统旨在为医生提供电子信息化的随访方式，简化随访工作，共享随访信息资源。主要功能包括：',
+                        '1.患者扫描科室二维码成为该科室的患者并填写个人档案。',
+                        '2.医生设计课题、问卷（类似于问卷星的功能），通过短信的方式将问卷链接发送给患者，由患者完成问卷的填写。',
+                        '3.医生通过问卷结果对各个患者采取对应的治疗措施。或根据一定量的患者调查结果数据来完善自己的课题。',
+                        '用到的技术有：springboot/mybatis-plus + vue/element-ui + mysql 等。'
+                    ]
                 },
                 {
                     name: '广告屏远程管理系统',
                     role: '主导人',
                     during: '2019年',
-                    desc: []
+                    desc: [
+                        '我们公司其中一项业务是在医院投放一种立式广告屏，用于帮助医生做宣传和宣教，这个项目是使用网页或app的方式来远程控制这些广告屏。主要功能有：',
+                        '1.通过消息推送来实现对广告屏的开关机、重启、打开指定网页、调整音量、远程升级等操作。',
+                        '2.广告屏定时发送心跳证明自己在线，并实时更新当前信息状态，例如剩余流量、可连接wifi列表、剩余存储空间等信息。',
+                        '3.通过网页后台配置广告屏上的布局、跳转逻辑、内容等。通过拖拽的方式自定义内容和布局，例如链接、文字、图片、视频等。',
+                        '用到的技术有：springboot/mybatis-plus + vue/antd-vue + mysql 等。'
+                    ]
                 },
                 {
                     name: '开发文档管理系统',
                     role: '主导人',
-                    during: '2019年',
-                    desc: []
+                    during: '2018年',
+                    desc: [
+                        '由于市面上没找到较为好用的接口文档工具，于是做了一个管理接口文档的小工具，可以记录历史修改数据、在线调试接口等。'
+                    ]
                 },
                 {
                     name: '公司内部OA系统',
                     role: '主导人',
-                    during: '2019年',
+                    during: '2018年',
                     desc: []
                 },
                 {
                     name: '医疗服务型企业服务内容填报系统',
                     role: '主导人',
-                    during: '2019年',
-                    desc: []
+                    during: '2017年',
+                    desc: [
+                        '该项目主要功能是：医疗服务型企业为厂家提供服务时需要记录服务相关过程，作为厂家支付服务费用的依据。',
+                        '主要功能有：服务商用户填报服务事项和内容（文字、图片、视频、定位等），厂家用户对内容进行审核，并按月结算服务费。',
+                        '用到的技术有：jsp/jquery/ajax/bootstrap/highcharts + servlet/tomcat + mysql 等。'
+                    ]
                 },
                 {
                     name: '医疗器械ERP系统',
                     role: '主导人',
-                    during: '2019年',
-                    desc: []
+                    during: '2016年',
+                    desc: [
+                        '该系统主要用于管理公司内部医疗器械的进销存。包括客户/产品/合同档案、采购/销售/库存，发票/回款，数据统计等主要功能。',
+                        '用到的技术有：jsp/jquery/ajax/bootstrap/highcharts + servlet/tomcat + mysql 等。'
+                    ]
                 },
             ]
         }
