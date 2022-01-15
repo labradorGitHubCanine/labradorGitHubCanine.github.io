@@ -19,6 +19,8 @@
 
         #app {
             padding: 32px;
+            margin: auto;
+            width: 768px;
         }
 
         .el-divider {
@@ -40,7 +42,7 @@
     </style>
 </head>
 <body>
-<div id="app" style="width: 768px; margin: auto">
+<div id="app">
     <h1 style="text-align: center">个人简历</h1>
     <el-divider content-position="left"><i class="el-icon-info"></i>&nbsp;基本信息</el-divider>
     <el-row>
@@ -48,7 +50,7 @@
             {{key}}：{{value}}
         </el-col>
     </el-row>
-    <el-divider content-position="left"><i class="el-icon-user-solid"></i>&nbsp;个人评价</el-divider>
+    <el-divider content-position="left"><i class="el-icon-user-solid"></i>&nbsp;自我评价</el-divider>
     <p>{{evaluate}}</p>
     <el-divider content-position="left"><i class="el-icon-s-platform"></i>&nbsp;个人技能</el-divider>
     <ul>
@@ -113,7 +115,10 @@
                     role: '主导人',
                     during: '2021年',
                     desc: [
-                        ''
+                        '该项目是一个类似于百度sugar的医疗企业行业数据看板项目，主要功能有：',
+                        '1.用户通过数据库直连、Excel导入、接口请求三种方式导入自己公司的销售、开票等数据',
+                        '2.后台对数据进行整合，展示出销售决策相关的一些数据。例如：销售同比环比增长（客户、产品、负责人等维度）、销售频次、应收账款、DSO天数等。',
+                        '用到的技术有：springboot/mybatis-plus + vue/element-ui + redis + mysql 等。'
                     ]
                 },
                 {
@@ -152,7 +157,10 @@
                     name: '公司内部OA系统',
                     role: '主导人',
                     during: '2018年',
-                    desc: []
+                    desc: [
+                        '主要用于公司内部的办公管理。主要功能有：日报、通讯录、请假、报销、车辆管理、档案库、时光阁（公司朋友圈）等。',
+                        '用到的技术有：springboot/mybatis-plus + jquery/ajax/bootstrap/highcharts + mysql等。'
+                    ]
                 },
                 {
                     name: '医疗服务型企业服务内容填报系统',
