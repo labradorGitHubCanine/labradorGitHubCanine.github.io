@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="dist/element-ui/2.15.6/css/index.css">
     <script src="dist/vue/2.6.14/vue.min.js"></script>
     <script src="dist/element-ui/2.15.6/js/index.js"></script>
+    <script src="dist/vue-to-pdf/main.js"></script>
     <style>
         * {
             font-family: "Arial", "Microsoft YaHei", "黑体", "宋体", sans-serif;
@@ -17,7 +18,7 @@
             height: 100%;
         }
 
-        #app {
+        #content {
             padding: 32px;
             margin: auto;
             width: 768px;
@@ -34,7 +35,7 @@
         }
 
         @media screen and ( max-width: 991px ) {
-            #app {
+            #content {
                 padding: 0;
                 width: 100%;
             }
@@ -43,53 +44,58 @@
 </head>
 <body>
 <div id="app">
-    <h1 style="text-align: center">个人简历</h1>
-    <el-divider content-position="left"><i class="el-icon-info"></i>&nbsp;基本信息</el-divider>
-    <el-row>
-        <el-col v-for="(value, key, index) in info" :span="14 - index % 2 * 4" :key="index">
-            {{key}}：{{value}}
-        </el-col>
-    </el-row>
-    <el-divider content-position="left"><i class="el-icon-user-solid"></i>&nbsp;自我评价</el-divider>
-    <p>{{evaluate}}</p>
-    <el-divider content-position="left"><i class="el-icon-s-platform"></i>&nbsp;个人技能</el-divider>
-    <ul>
-        <li v-for="(i, index) in skills" :key="index">{{i}}</li>
-    </ul>
-    <el-divider content-position="left"><i class="el-icon-school"></i>&nbsp;教育经历</el-divider>
-    <el-row>
-        <el-col :span="10">中国计量大学</el-col>
-        <el-col :span="10">信息与计算科学</el-col>
-        <el-col :span="4">2010.9 ~ 2014.6</el-col>
-    </el-row>
-    <el-divider content-position="left"><i class="el-icon-office-building"></i>&nbsp;工作经历</el-divider>
-    <el-row>
-        <el-col :span="10">杭州圆规网络科技有限公司</el-col>
-        <el-col :span="10">Java开发</el-col>
-        <el-col :span="4">2015.12 至今</el-col>
-    </el-row>
-    <el-row>
-        <el-col :span="10">杭州贝好科技有限公司</el-col>
-        <el-col :span="10">硬件实施</el-col>
-        <el-col :span="4">2014.6 ~ 2015.11</el-col>
-    </el-row>
-    <el-divider content-position="left"><i class="el-icon-s-cooperation"></i>&nbsp;项目经验</el-divider>
-    <el-row v-for="(i, index) in projects" :key="index">
-        <b>
-            <el-col :span="10">{{index + 1}}.{{i.name}}</el-col>
-            <el-col :span="10">{{i.role}}</el-col>
-            <el-col :span="4">{{i.during}}</el-col>
-        </b>
-        <el-col :span="24">
-            <p v-for="(j, index2) in i.desc" :key="index2">{{j}}</p>
-        </el-col>
-    </el-row>
-    <el-divider content-position="left"><i class="el-icon-s-opportunity"></i>&nbsp;其它</el-divider>
-    <div>简历主页：<a href="https://labradorgithubcanine.github.io">https://labradorgithubcanine.github.io</a></div>
+    <div ref="app" id="content">
+        <h1 style="text-align: center">个人简历</h1>
+        <el-divider content-position="left"><i class="el-icon-info"></i>&nbsp;基本信息</el-divider>
+        <el-row>
+            <el-col v-for="(value, key, index) in info" :span="14 - index % 2 * 4" :key="index">
+                {{key}}：{{value}}
+            </el-col>
+        </el-row>
+        <el-divider content-position="left"><i class="el-icon-user-solid"></i>&nbsp;自我评价</el-divider>
+        <p>{{evaluate}}</p>
+        <el-divider content-position="left"><i class="el-icon-s-platform"></i>&nbsp;个人技能</el-divider>
+        <ul>
+            <li v-for="(i, index) in skills" :key="index">{{i}}</li>
+        </ul>
+        <el-divider content-position="left"><i class="el-icon-school"></i>&nbsp;教育经历</el-divider>
+        <el-row>
+            <el-col :span="10">中国计量大学</el-col>
+            <el-col :span="10">信息与计算科学</el-col>
+            <el-col :span="4">2010.9 ~ 2014.6</el-col>
+        </el-row>
+        <el-divider content-position="left"><i class="el-icon-office-building"></i>&nbsp;工作经历</el-divider>
+        <el-row>
+            <el-col :span="10">杭州圆规网络科技有限公司</el-col>
+            <el-col :span="10">Java开发</el-col>
+            <el-col :span="4">2015.12 至今</el-col>
+        </el-row>
+        <el-row>
+            <el-col :span="10">杭州贝好科技有限公司</el-col>
+            <el-col :span="10">硬件实施</el-col>
+            <el-col :span="4">2014.6 ~ 2015.11</el-col>
+        </el-row>
+        <el-divider content-position="left"><i class="el-icon-s-cooperation"></i>&nbsp;项目经验</el-divider>
+        <el-row v-for="(i, index) in projects" :key="index">
+            <b>
+                <el-col :span="10">{{index + 1}}.{{i.name}}</el-col>
+                <el-col :span="10">{{i.role}}</el-col>
+                <el-col :span="4">{{i.during}}</el-col>
+            </b>
+            <el-col :span="24">
+                <p v-for="(j, index2) in i.desc" :key="index2">{{j}}</p>
+            </el-col>
+        </el-row>
+        <el-divider content-position="left"><i class="el-icon-s-opportunity"></i>&nbsp;其它</el-divider>
+        <div>简历主页：<a href="https://labradorgithubcanine.github.io">https://labradorgithubcanine.github.io</a></div>
+    </div>
 </div>
 <script>
     new Vue({
         el: '#app',
+        mounted() {
+            this.$PDFSave(this.$refs['app'], '我的文件')
+        },
         data: {
             info: {
                 "姓名": "强名威",
@@ -183,7 +189,7 @@
                 },
             ]
         }
-    })
+    });
 </script>
 </body>
 </html>
